@@ -12,7 +12,7 @@ const {
   title,
   description = `${profile.name}, ${profile.position} at ${profile.institution}: radar meteorology, drop size distributions and precipitation microphysics.`,
 } = Astro.props;
-const fullTitle = title ? `${title} · ${profile.short_name}` : `${profile.short_name} · ${profile.eyebrow}`;
+const fullTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.eyebrow}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
 const token = profile.site.cloudflare_analytics_token;
@@ -32,14 +32,14 @@ const token = profile.site.cloudflare_analytics_token;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#F3ECDE" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={profile.short_name} />
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${profile.short_name}: ${profile.eyebrow}`} />
+    <meta property="og:image:alt" content={`${profile.name}: ${profile.eyebrow}`} />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>

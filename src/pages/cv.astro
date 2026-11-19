@@ -40,7 +40,7 @@ const updated = buildTime.toLocaleDateString("en-US", { year: "numeric", month: 
       <ul class="cv-rows">
         {cv.education.map((e) => (
           <li class="cv-row"><span class="cv-when">{e.year}</span>
-            <div class="cv-what">{e.degree}, {e.institution}{e.thesis && <p class="sub">{e.thesis}</p>}</div></li>
+            <div class="cv-what">{e.degree}, {e.institution}{e.thesis && <p class="sub">{e.thesis.kind}: {e.thesis.url ? <a href={e.thesis.url}>{e.thesis.title}</a> : e.thesis.title}</p>}</div></li>
         ))}
       </ul>
     </section>

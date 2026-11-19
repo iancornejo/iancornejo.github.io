@@ -16,7 +16,6 @@ const link = z.object({ label: text, url: z.url() });
 
 const Profile = z.object({
   name: text,
-  short_name: text,
   eyebrow: text,
   position: text,
   institution: text,
@@ -101,7 +100,12 @@ const DataCode = z.object({
 
 const CV = z.object({
   education: z.array(
-    z.object({ degree: text, institution: text, year: z.number().int(), thesis: z.string().optional() }),
+    z.object({
+      degree: text,
+      institution: text,
+      year: z.number().int(),
+      thesis: z.object({ kind: text, title: text, url: z.url().optional() }).optional(),
+    }),
   ),
   appointments: z.array(z.object({ title: text, institution: text, dates: z.coerce.string() })),
   funding: z.array(

@@ -40,26 +40,12 @@
       Author(s), published by John Wiley & Sons Ltd on behalf of the Royal Meteorological
       Society under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
   summary: >-
-    Extreme rainfall is fundamentally driven by microphysical processes aloft, which can be
-    strongly influenced by complex terrain. The 2022 Prediction of Rainfall Extremes Campaign
-    in the Pacific (PRECIP 2022) provided a unique opportunity to study these relationships
-    through the deployment of the NSF NCAR S-band dual-polarization radar (S-Pol) in Taiwan,
-    a region characterized by steep topography and frequent extreme precipitation. This study
-    examines a Mei-Yu front case characterized by widespread, long-duration rainfall with
-    embedded deep convective cells occurring both upstream and over Taiwan's topography. Our
-    objective is to link microphysical processes to the varying terrain in context of rainfall
-    during this high-impact event. Microphysical characteristics are inferred from vertical
-    gradients of dual-polarization radar variables and modeled drop size distribution (DSD)
-    moments, supported by ground-based disdrometer observations that resolve both the drizzle
-    and precipitation modes. A normalized double-moment generalized gamma DSD model is applied
-    to S-Pol to obtain DSD moments that are linked to dominant microphysical processes aloft
-    including radar-inferred graupel presence. Results show that collision coalescence is the
-    most frequent warm-rain process in convection, contributing to large drop production and
-    increased rainfall rates. Additionally, graupel presence is associated with precipitation
-    enhancement, with the magnitude of graupel-related amplification increasing with terrain
-    height. This study highlights the benefit of modeling both the drizzle and precipitation
-    modes of the DSD using dual-polarization radars to connect microphysical processes aloft
-    to complex terrain.
+    Using S-band dual-polarization radar and disdrometers during PRECIP 2022 in Taiwan, we
+    analyze a Mei-Yu frontal event with widespread stratiform rain and embedded convection.
+    Multiple disdrometers are used to create a novel drop size distribution model for S-band
+    radars resolving both the drizzle and precipitation modes. The model reveals both inferred
+    collision–coalescence and graupel presence increases drop size and concentration,
+    subsequently increasing rainfall rates, most notably in complex terrain.
   links: []
 
 - id: cornejo2025jtech

@@ -2,10 +2,11 @@
 import Base from "../layouts/Base.astro";
 import Publication from "../components/Publication.astro";
 import Presentations from "../components/Presentations.astro";
-import { profile, publications } from "../lib/content";
+import { cv, profile, publications } from "../lib/content";
 
 const published = publications.filter((p) => p.status === "published" || p.status === "accepted");
 const pending = publications.filter((p) => p.status === "in-revision" || p.status === "in-review");
+const theses = cv.education.filter((e) => e.thesis);
 ---
 <Base title="Publications" description={`Peer-reviewed papers and conference presentations by ${profile.name}.`}>
   <header class="page-head">
@@ -23,6 +24,26 @@ const pending = publications.filter((p) => p.status === "in-revision" || p.statu
     <section class="section" aria-labelledby="pending-h">
       <h2 id="pending-h" class="section-label">In review and revision</h2>
       <ol class="pub-list">{pending.map((pub) => <Publication pub={pub} />)}</ol>
+    </section>
+  )}
+
+  {theses.length > 0 && (
+    <section class="section" aria-labelledby="theses-h">
+      <h2 id="theses-h" class="section-label">Dissertation and thesis</h2>
+      <ol class="pub-list">
+        {theses.map((e) => (
+          <li class="pub">
+            <span class="pub-year">{e.year}</span>
+            <div class="pub-body">
+              <p class="pub-cite">
+                <strong>Cornejo, I. C.</strong>, {e.year}: {e.thesis!.title}. {e.degree.split(",")[0]} {e.thesis!.kind.toLowerCase()},{" "}
+                {e.institution}.{" "}
+                {e.thesis!.url && <a href={e.thesis!.url}>PDF</a>}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   )}
 

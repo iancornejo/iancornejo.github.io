@@ -7,11 +7,17 @@ education:
   - degree: PhD, Atmospheric and Oceanic Sciences
     institution: University of Wisconsin–Madison
     year: 2026
-    thesis: "Dissertation: Echoes of Extreme Rainfall: Radar Perspectives of Multiscale Precipitation Controls"
+    thesis:
+      kind: Dissertation
+      title: "Echoes of Extreme Rainfall: Radar Perspectives of Multiscale Precipitation Controls"
+      url: https://aos.wisc.edu/aosjournal/Volume48/Cornejo_PhD.pdf
   - degree: MS, Atmospheric and Oceanic Sciences
     institution: University of Wisconsin–Madison
     year: 2023
-    thesis: "Thesis: Orographic Controls on Extreme Precipitation associated with a Mei-yu Front"
+    thesis:
+      kind: Thesis
+      title: Orographic Controls on Extreme Precipitation associated with a Mei-yu Front
+      url: https://aos.wisc.edu/aosjournal/Volume42/Cornejo_MS.pdf
   - degree: BS, Atmospheric Sciences
     institution: University of Illinois Urbana-Champaign
     year: 2020
@@ -68,7 +74,7 @@ fieldwork:
 # in presentations.yaml).
 workshops:
   - name: INCUS Science Team Meeting
-    place: ""          # TODO: location
+    place: Fort Collins, Colorado
     dates: Nov 2026
   - name: NSF NCAR Radar Technology Community Workshop
     place: Boulder, Colorado
@@ -102,7 +108,7 @@ service:
       - Terrestrial, Atmospheric and Oceanic Sciences (2026–present)
   - group: University of Wisconsin–Madison
     items:
-      - Member, Colloquium Committee (2025–2026)      # check: still a member?
+      - Member, Colloquium Committee (2025–2026)
       - Graduate student representative, Curriculum Board (2023–2024)
       - Graduate student representative, Graduate Program Board (2023–2024)
       - Facilitator, High Impact Weather Group (2023)

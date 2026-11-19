@@ -9,7 +9,7 @@ const year = buildTime.getUTCFullYear();
     <div class="footer-id">
       <RadarMark size={28} />
       <div>
-        <p class="footer-name">{profile.short_name}</p>
+        <p class="footer-name">{profile.name}</p>
         <p class="muted">{profile.institution} · {profile.location}</p>
       </div>
     </div>
@@ -20,7 +20,7 @@ const year = buildTime.getUTCFullYear();
       <li><a href="https://precip.science">precip.science</a></li>
     </ul>
     <p class="footer-legal muted">
-      © {year} {profile.short_name} · Text CC BY 4.0 · Code MIT · Figures from published papers © their publishers
+      © {year} {profile.name} · Text CC BY 4.0 · Code MIT · Figures from published papers © their publishers
     </p>
   </div>
 </footer>

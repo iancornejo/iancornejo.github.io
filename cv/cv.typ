@@ -1,4 +1,4 @@
-// Ian Cornejo's CV, typeset from the same YAML files as the website (src/data/).
+// Ian C. Cornejo's CV, typeset from the same YAML files as the website (src/data/).
 //
 // Build (the deploy workflow runs this before the Astro build):
 //   typst compile --root . --font-path cv/fonts cv/cv.typ public/ian-cornejo-cv.pdf
@@ -117,7 +117,12 @@
 #let sections = (
   education: () => section("Education", {
     for e in cv.education {
-      row(str(e.year), [#e.degree, #e.institution#if "thesis" in e [ \ #sub(e.thesis)]])
+      let thesis = if "thesis" in e {
+        let t = e.thesis
+        let title = if "url" in t { link(t.url, t.title) } else { [#t.title] }
+        [ \ #sub[#t.kind: #title]]
+      }
+      row(str(e.year), [#e.degree, #e.institution#thesis])
     }
   }),
   appointments: () => section("Appointments", {

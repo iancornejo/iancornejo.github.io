@@ -1,6 +1,6 @@
 # iancornejo.github.io
 
-Ian Cornejo's personal site, built with [Astro](https://astro.build) and deployed to GitHub Pages on every push to `main`.
+Ian C. Cornejo's personal site, built with [Astro](https://astro.build) and deployed to GitHub Pages on every push to `main`.
 
 ## Design
 
