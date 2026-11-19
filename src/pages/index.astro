@@ -1,14 +1,34 @@
 ---
+import "../styles/fonts.css";
+import "../styles/tokens.css";
+import "../styles/base.css";
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/fonts/geom-wght.woff2" as="font" type="font/woff2" crossorigin />
     <title>Ian Cornejo</title>
   </head>
   <body>
-    <h1>Ian Cornejo</h1>
-    <p>Radar meteorologist · NSF AGS Postdoctoral Fellow, Colorado State University</p>
-    <p>Site under construction. Research products: <a href="https://precip.science">precip.science</a></p>
+    <main class="container">
+      <p class="caps">Radar meteorology · Precipitation physics</p>
+      <h1>Ian Cornejo</h1>
+      <p class="lead">Radar meteorologist · NSF AGS Postdoctoral Fellow, Colorado State University</p>
+      <p class="muted">Site under construction. Research products: <a href="https://precip.science">precip.science</a></p>
+    </main>
   </body>
 </html>
+
+<style>
+  main { padding-block: var(--space-11); }
+  h1 {
+    margin-block: var(--space-4) var(--space-5);
+    font-size: var(--text-display);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+  .lead { max-width: var(--measure); margin-bottom: var(--space-4); font-size: var(--text-lead); }
+  a { color: var(--color-link); }
+</style>
