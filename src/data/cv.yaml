@@ -1,0 +1,84 @@
+# CV sections that aren't on other pages. Publications, presentations, software and
+# datasets come from their own files, so each fact lives in one place.
+# `dates` are free text, shown as written (e.g. "Aug 2026–present").
+
+education:
+  - degree: PhD, Atmospheric and Oceanic Sciences
+    institution: University of Wisconsin–Madison
+    year: 2026
+    thesis: "Dissertation: Echoes of Extreme Rainfall: Radar Perspectives of Multiscale Precipitation Controls"
+  - degree: MS, Atmospheric and Oceanic Sciences
+    institution: University of Wisconsin–Madison
+    year: 2023
+    thesis: "Thesis: Orographic Controls on Extreme Precipitation associated with a Mei-yu Front"
+  - degree: BS, Atmospheric Sciences
+    institution: University of Illinois Urbana-Champaign
+    year: 2020
+  - degree: BS, Engineering Physics
+    institution: University of Illinois Urbana-Champaign
+    year: 2020
+
+appointments:
+  - title: NSF AGS Postdoctoral Research Fellow
+    institution: Colorado State University
+    dates: Aug 2026–present
+  - title: Postdoctoral Fellow
+    institution: Colorado State University
+    dates: Jul 2026
+  - title: Postdoctoral Fellow
+    institution: University of Wisconsin–Madison
+    dates: May–Jun 2026
+  - title: Graduate Visitor, NCAR Graduate Visitor Program
+    institution: NSF NCAR Earth Observing Laboratory, Remote Sensing Facility
+    dates: "2023"
+
+funding:
+  - title: "AGS-PRF: Profiling Drop Size Distributions across Multiple Remote Sensing Platforms"
+    sponsor: U.S. National Science Foundation, AGS Postdoctoral Research Fellowship
+    award: AGS-2618039
+    dates: Aug 2026–present
+
+# Awards other than presentation awards (those come from presentations.yaml).
+awards:
+  - name: Wahl TA Award
+    org: UW–Madison
+    year: 2025
+  - name: Lettau Award
+    org: UW–Madison
+    year: 2023
+  - name: Reid Bryson Scholarship
+    org: UW–Madison
+    year: 2023
+  - name: AOS First-Year Graduate Student Award
+    org: UW–Madison
+    year: 2021
+
+fieldwork:
+  - campaign: PRECIP 2022, Prediction of Rainfall Extremes Campaign in the Pacific
+    place: Taiwan and southern Japan
+    role: Participant, science team
+    dates: "2022"
+  - campaign: Pre-CIP 2021, Preparatory Rockies Experiment for the Campaign in the Pacific
+    place: Colorado
+    role: Participant, science team
+    dates: "2021"
+
+teaching:
+  - role: Teaching Assistant, AOS 453
+    institution: University of Wisconsin–Madison
+    dates: Spring 2023–2025
+
+mentoring:
+  - Mentored three REU students    # TODO: names and years
+
+service:
+  - Session chair, AMS Conference on Radar Meteorology (2025, 2023)
+  - Session chair, AMS Conference on Mesoscale Processes (2023)
+  - "Reviewer: Scientific Reports; Journal of Geophysical Research: Atmospheres; Terrestrial, Atmospheric and Oceanic Sciences; Journal of Atmospheric and Oceanic Technology; Monthly Weather Review"
+  # TODO: UW–Madison committees
+
+skills:
+  - label: Programming
+    items: Python, MATLAB, NCL, shell, Julia, C++, Fortran
+  - label: Models
+    items: WRF

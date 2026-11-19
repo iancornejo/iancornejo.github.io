@@ -1,0 +1,34 @@
+---
+import Base from "../layouts/Base.astro";
+import Publication from "../components/Publication.astro";
+import Presentations from "../components/Presentations.astro";
+import { profile, publications } from "../lib/content";
+
+const published = publications.filter((p) => p.status === "published" || p.status === "accepted");
+const pending = publications.filter((p) => p.status === "in-revision" || p.status === "in-review");
+---
+<Base title="Publications" description={`Peer-reviewed papers and conference presentations by ${profile.name}.`}>
+  <header class="page-head">
+    <h1>Publications</h1>
+    <p class="lead">Peer-reviewed papers, newest first. Open an entry for a figure and a plain-language summary; each DOI goes to the publisher's version.</p>
+    <p class="meta"><a class="link" href={`https://orcid.org/${profile.orcid}`}>ORCID {profile.orcid}</a> · <a class="link" href="#presentations">Presentations</a></p>
+  </header>
+
+  <section class="section" aria-labelledby="papers-h">
+    <h2 id="papers-h" class="section-label">Peer-reviewed papers</h2>
+    <ol class="pub-list">{published.map((pub) => <Publication pub={pub} />)}</ol>
+  </section>
+
+  {pending.length > 0 && (
+    <section class="section" aria-labelledby="pending-h">
+      <h2 id="pending-h" class="section-label">In review and revision</h2>
+      <ol class="pub-list">{pending.map((pub) => <Publication pub={pub} />)}</ol>
+    </section>
+  )}
+
+  <section class="section" id="presentations" aria-labelledby="talks-h">
+    <h2 id="talks-h" class="section-label">Presentations</h2>
+    <p class="intro">Conference talks and posters I gave as first author, and invited talks.</p>
+    <Presentations />
+  </section>
+</Base>

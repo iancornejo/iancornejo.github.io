@@ -1,0 +1,11 @@
+---
+// Email link assembled in the browser (D19), so the address isn't sitting in the HTML for
+// spam bots. Without JavaScript it reads "user [at] domain".
+import { profile } from "../lib/content";
+interface Props { label?: string; class?: string }
+const { label, class: cls } = Astro.props;
+const { user, domain } = profile.email;
+---
+<a class={cls} href="/about/#contact" data-u={user} data-d={domain} data-show={label ? undefined : ""}>
+  {label ?? `${user} [at] ${domain}`}
+</a>

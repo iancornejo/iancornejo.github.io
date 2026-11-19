@@ -1,0 +1,11 @@
+---
+// "New!" and "Upcoming" tags. Each carries the date it stops applying (data-until);
+// a small script in Base.astro removes expired ones, so they lapse even without a rebuild.
+import Icon from "./Icon.astro";
+interface Props { kind: "new" | "upcoming"; until: string }
+const { kind, until } = Astro.props;
+---
+<span class:list={["badge", `badge-${kind}`]} data-until={until}>
+  {kind === "new" && <><Icon name="star" size={11} />New!</>}
+  {kind === "upcoming" && "Upcoming"}
+</span>

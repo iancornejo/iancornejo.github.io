@@ -1,0 +1,51 @@
+---
+// Presentations grouped by meeting. A poster (PDF in public/posters/, preview image in
+// src/assets/posters/) adds a chevron that opens a preview linking to the full PDF.
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Badge from "./Badge.astro";
+import Icon from "./Icon.astro";
+import { authorsHtml, groupPresentations, isUpcoming, presentations, typeLabel } from "../lib/content";
+
+const posters = import.meta.glob<{ default: ImageMetadata }>("/src/assets/posters/*.{png,jpg,jpeg,webp}", { eager: true });
+const groups = groupPresentations(presentations);
+---
+<ol class="pub-list talks">
+  {groups.map((g) => (
+    <li class="pub">
+      <span class="pub-year">{g.year}</span>
+      <div class="pub-body">
+        <p class="talk-meeting">
+          {g.meeting}{g.location ? `, ${g.location}` : ""}
+          {isUpcoming(g.ends) && g.ends && <Badge kind="upcoming" until={g.ends} />}
+        </p>
+        <ul class="talk-items">
+          {g.items.map((p) => {
+            const img = p.poster?.image ? posters[`/src/assets/posters/${p.poster.image}`]?.default : undefined;
+            return (
+              <li>
+                <p class="talk-title">{p.title}</p>
+                <p class="talk-meta">
+                  <span set:html={authorsHtml(p.authors)} />
+                  {typeLabel[p.type] && <span class="tag">{typeLabel[p.type]}</span>}
+                  {p.award && <span class="award"><Icon name="star" size={12} />{p.award}</span>}
+                </p>
+                {p.poster && (
+                  <details class="pub-more">
+                    <summary><Icon name="chevron" class="chev" size={16} /><span>Poster</span></summary>
+                    <div class="poster-panel">
+                      <a href={`/posters/${p.poster.pdf}`}>
+                        {img ? <Image src={img} alt={`Poster: ${p.title}`} widths={[480, 960]} sizes="(min-width: 800px) 480px, 92vw" /> : "Open the poster (PDF)"}
+                      </a>
+                      <p class="credit"><a href={`/posters/${p.poster.pdf}`}>Full poster (PDF)</a></p>
+                    </div>
+                  </details>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </li>
+  ))}
+</ol>

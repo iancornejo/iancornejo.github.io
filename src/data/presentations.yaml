@@ -1,0 +1,113 @@
+# Conference presentations and invited talks, newest first. Used by the
+# Publications page and the CV (awards here also appear in the CV's Awards list).
+#
+# Fields:
+#   meeting, location, year   the conference
+#   ends      last day of the meeting (YYYY-MM-DD); before then it's tagged "Upcoming"
+#   type      talk | poster | invited (leave empty if unsure)
+#   award     e.g. "1st Place Poster"
+#   poster    optional: a PDF in public/posters/ plus a preview image in
+#             src/assets/posters/, which adds an expandable preview, e.g.
+#               poster:
+#                 pdf: radar2025.pdf
+#                 image: radar2025.jpg
+
+- id: ams2027-drizzle
+  meeting: AMS Annual Meeting
+  location: Denver, Colorado
+  year: 2027
+  ends: 2027-01-14
+  type: ""            # TODO: talk or poster?
+  title: "Catching the Drizzle: Validating Complete Profiled Drop Size Distributions from a Snow-Level Radar During TIME-SLICE CO"
+  authors: [I. C. Cornejo, B. Dolan, M. M. Bell, C. Williams]
+
+- id: radar2025-microphysics
+  meeting: AMS 41st International Conference on Radar Meteorology
+  location: Toronto, Canada
+  year: 2025
+  type: poster
+  title: Radar-Derived Insights of Microphysical Processes during PRECIP 2022
+  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell, W.-Y. Chang]
+  award: 1st Place Poster
+
+- id: icmcs2024-microphysics
+  meeting: 16th International Conference on Mesoscale Convective Systems (ICMCS)
+  location: Gyeongju, South Korea
+  year: 2024
+  type: ""            # TODO: talk or poster?
+  title: Microphysical Processes leading to Heavy Mei-Yu Rainfall near Complex Terrain during PRECIP/TAHOPE
+  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell]
+  award: Outstanding Student Presentation   # TODO: confirm which 2024 presentation won
+
+- id: icmcs2024-attenuation
+  meeting: 16th International Conference on Mesoscale Convective Systems (ICMCS)
+  location: Gyeongju, South Korea
+  year: 2024
+  type: talk
+  title: Specific Attenuation-based Rain Rate Applicability to the PRECIP/TAHOPE S-Pol Dataset near Complex Terrain
+  authors: [I. C. Cornejo, A. K. Rowe, U. Romatschke, M. J. Dixon]
+
+- id: eol2023-seminar
+  meeting: NCAR EOL Seminar Series
+  year: 2023
+  type: invited
+  title: S-Pol during PRECIP/TAHOPE 2022      # TODO: check the talk's exact title
+  authors: [I. C. Cornejo]
+
+- id: radar2023-retrievals
+  meeting: AMS 40th Conference on Radar Meteorology
+  location: Minneapolis, Minnesota
+  year: 2023
+  type: poster
+  title: Validation and Intercomparison of Rain Rate Retrievals using the S-Pol Radar during PRECIP
+  authors: [I. C. Cornejo, A. K. Rowe, U. Romatschke, M. J. Dixon]
+
+- id: meso2023-orographic
+  meeting: AMS 20th Conference on Mesoscale Processes
+  location: Madison, Wisconsin
+  year: 2023
+  type: talk
+  title: Orographic Modifications to Heavy Mei-Yu Rainfall
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen, Y. Zhang]
+
+- id: icmcs2023-orographic
+  meeting: 15th International Conference on Mesoscale Convective Systems (ICMCS)
+  location: Fort Collins, Colorado
+  year: 2023
+  type: talk
+  title: Orographic Controls on Extreme Precipitation associated with a Mei-Yu Front
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen]
+  award: Outstanding Student Presentation
+
+- id: icmcs2023-lrose
+  meeting: 15th International Conference on Mesoscale Convective Systems (ICMCS)
+  location: Fort Collins, Colorado
+  year: 2023
+  type: poster
+  title: LROSE Tools to Estimate Surface Rain Rate
+  authors: [I. C. Cornejo, B. Javornik, A. K. Rowe, J. C. DeHart, M. J. Dixon]
+
+- id: mountain2022-meiyu
+  meeting: AMS 20th Conference on Mountain Meteorology
+  location: Park City, Utah
+  year: 2022
+  type: poster
+  title: Mei-yu Frontal Convergence and Heavy Rainfall in Taiwan's Complex Terrain
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen, A. D. Nugent]
+  award: 3rd Place Poster
+
+- id: mscar2021-microphysics
+  meeting: Midwest Student Conference on Atmospheric Research
+  year: 2021
+  type: poster
+  title: The Influence of Microphysical Processes in Extreme Rain Events Found in Complex Terrain
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen, A. D. Nugent]
+  award: 2nd Place Poster
+
+- id: ams2021-microphysics
+  meeting: AMS Annual Meeting
+  location: Virtual
+  year: 2021
+  type: poster
+  title: The Influence of Microphysical Processes in Extreme Rain Events Found in Complex Terrain
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen, A. D. Nugent]

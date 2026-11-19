@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import Badge from "../components/Badge.astro";
+import { authorsHtml, datacode, newUntil } from "../lib/content";
+---
+<Base title="Data + Code" description="Open-source software and published datasets by Ian Cornejo, including EccoPy and disdrometer data from PRECIP and Pre-CIP.">
+  <header class="page-head">
+    <h1>Data + Code</h1>
+    <p class="lead">Software and datasets I've released. They're free to use; please cite them with their DOIs.</p>
+  </header>
+
+  <section class="section dc" aria-labelledby="sw-h">
+    <h2 id="sw-h" class="section-label">Software</h2>
+    <ul class="dc-list">
+      {datacode.software.map((s) => {
+        const until = newUntil(s.added);
+        return (
+          <li class="dc-item">
+            <h3>{s.name}{until && <Badge kind="new" until={until} />}</h3>
+            <p>{s.summary}</p>
+            {(s.credit || s.reference_doi) && (
+              <p class="muted">{s.credit}{s.reference_doi && <> Algorithm reference: <a href={`https://doi.org/${s.reference_doi}`}>doi:{s.reference_doi}</a>.</>}</p>
+            )}
+            <p class="muted">
+              {s.doi && <>Cite as <a href={`https://doi.org/${s.doi}`}>doi:{s.doi}</a>. </>}
+              {s.license && <>License: {s.license}.</>}
+            </p>
+            {s.links.length > 0 && (
+              <div class="btn-row">{s.links.map((l) => <a class="btn btn-sm" href={l.url}>{l.label}</a>)}</div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section class="section dc" aria-labelledby="data-h">
+    <h2 id="data-h" class="section-label">Datasets</h2>
+    <ul class="dc-list">
+      {datacode.datasets.map((d) => {
+        const until = newUntil(d.added);
+        return (
+          <li class="dc-item">
+            <h3>{d.title}{until && <Badge kind="new" until={until} />}</h3>
+            {d.summary && <p>{d.summary}</p>}
+            <p class="muted">
+              <Fragment set:html={authorsHtml(d.authors)} />, {d.year}: {d.title}.{d.version && ` Version ${d.version}.`} {d.publisher}.{" "}
+              <a href={`https://doi.org/${d.doi}`}>doi:{d.doi}</a>
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</Base>

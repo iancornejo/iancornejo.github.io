@@ -4,17 +4,30 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Daily rebuild so "New!" badges and "Upcoming" tags expire on time. GitHub pauses
+  # scheduled runs after 60 days without a push; a script in the page covers that gap.
+  schedule:
+    - cron: "23 7 * * *"   # 07:23 UTC, just after midnight in Denver
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      - name: Build the CV PDF from src/data
+        run: typst compile --root . --font-path cv/fonts --ignore-system-fonts cv/cv.typ public/ian-cornejo-cv.pdf
       - uses: withastro/action@v6
 
   deploy:

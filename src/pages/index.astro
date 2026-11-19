@@ -1,37 +1,57 @@
 ---
-import "../styles/fonts.css";
-import "../styles/tokens.css";
-import "../styles/base.css";
----
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/fonts/geom-wght.woff2" as="font" type="font/woff2" crossorigin />
-    <title>Ian Cornejo</title>
-  </head>
-  <body>
-    <main class="container">
-      <p class="caps">Radar meteorology · Precipitation physics</p>
-      <h1>Ian Cornejo</h1>
-      <p class="lead">Radar meteorologist · NSF AGS Postdoctoral Fellow, Colorado State University</p>
-      <p class="muted">Site under construction. Research products: <a href="https://precip.science">precip.science</a></p>
-    </main>
-  </body>
-</html>
+import Base from "../layouts/Base.astro";
+import Hanging from "../components/Hanging.astro";
+import Publication from "../components/Publication.astro";
+import DropMark from "../components/DropMark.astro";
+import Icon from "../components/Icon.astro";
+import EmailLink from "../components/EmailLink.astro";
+import { profile, publications } from "../lib/content";
 
-<style>
-  main { padding-block: var(--space-11); }
-  h1 {
-    margin-block: var(--space-4) var(--space-5);
-    font-size: var(--text-display);
-    font-weight: var(--weight-bold);
-    line-height: var(--leading-display);
-    letter-spacing: var(--tracking-display);
-  }
-  .lead { max-width: var(--measure); margin-bottom: var(--space-4); font-size: var(--text-lead); }
-  a { color: var(--color-link); }
-</style>
+const published = publications.filter((p) => p.status === "published");
+const dots = ["#A3352A", "#2F4B9A", "#C98A2E", "#3F7F62", "#66574A"];
+---
+<Base>
+  <section class="hero" aria-labelledby="name">
+    <div class="hero-text">
+      <p class="caps">{profile.eyebrow}</p>
+      <h1 id="name">{profile.short_name}</h1>
+      <p class="lead">{profile.lead}</p>
+      <p class="meta muted">{profile.position} · {profile.institution} · {profile.location}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/cv/">CV</a>
+        <a class="btn" href={`https://github.com/${profile.github}`}>GitHub</a>
+        <EmailLink class="btn" label="Email" />
+      </div>
+    </div>
+    <div class="hero-art"><Hanging /></div>
+  </section>
+
+  <section class="section" aria-labelledby="interests-h">
+    <h2 id="interests-h" class="section-label">Research interests</h2>
+    <ul class="interests">
+      {profile.interests.map((it, i) => (
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill={dots[i % dots.length]} /></svg>
+          <h3>{it.title}</h3>
+          <p>{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="pubs-h">
+    <h2 id="pubs-h" class="section-label">Publications</h2>
+    <ol class="pub-list">
+      {published.map((pub) => <Publication pub={pub} expandable={false} />)}
+    </ol>
+    <p class="more-link"><a class="link" href="/publications/">All publications and presentations</a></p>
+  </section>
+
+  <section class="band" aria-label="precip.science">
+    <div class="band-text">
+      <p class="band-title"><DropMark size={22} />precip.science</p>
+      <p>Experimental real-time radar products: echo classification, storm objects and microphysical fingerprints.</p>
+    </div>
+    <a class="btn btn-dark" href="https://precip.science">Visit precip.science<Icon name="external" size={14} /></a>
+  </section>
+</Base>

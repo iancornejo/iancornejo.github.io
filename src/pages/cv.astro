@@ -1,0 +1,163 @@
+---
+// The full CV, built from the same YAML as the rest of the site. The PDF version is
+// typeset from the same files by Typst (cv/cv.typ) in the deploy workflow.
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import Base from "../layouts/Base.astro";
+import EmailLink from "../components/EmailLink.astro";
+import Icon from "../components/Icon.astro";
+import {
+  authorsHtml, buildTime, cv, datacode, journalDetails, presentationAwards, presentations,
+  profile, publications, statusLabel, typeLabel,
+} from "../lib/content";
+
+const PDF = "/ian-cornejo-cv.pdf";
+const hasPdf = existsSync(join(process.cwd(), "public", PDF));
+const published = publications.filter((p) => p.status === "published" || p.status === "accepted");
+const pending = publications.filter((p) => p.status === "in-revision" || p.status === "in-review");
+const invited = presentations.filter((p) => p.type === "invited");
+const conference = presentations.filter((p) => p.type !== "invited");
+const awards = [...cv.awards, ...presentationAwards()].sort((a, b) => b.year - a.year);
+const updated = buildTime.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Denver" });
+---
+<Base title="CV" description={`Curriculum vitae of ${profile.name}, ${profile.position} at ${profile.institution}.`}>
+  <div class="cv">
+    <header class="page-head">
+      <h1>Curriculum vitae</h1>
+      <p class="lead">{profile.name} · {profile.position}, {profile.institution}</p>
+      <p class="meta muted">
+        <EmailLink /> · <a href={`https://orcid.org/${profile.orcid}`}>ORCID {profile.orcid}</a> ·{" "}
+        <a href={`https://github.com/${profile.github}`}>github.com/{profile.github}</a>
+      </p>
+      <div class="btn-row" style="margin-top: var(--space-5)">
+        {hasPdf && <a class="btn btn-primary" href={PDF}><Icon name="download" size={16} />Download PDF</a>}
+        <span class="muted" style="align-self: center; font-size: var(--text-sm)">Updated {updated}</span>
+      </div>
+    </header>
+
+    <section class="cv-section" aria-labelledby="edu-h">
+      <h2 id="edu-h" class="section-label">Education</h2>
+      <ul class="cv-rows">
+        {cv.education.map((e) => (
+          <li class="cv-row"><span class="cv-when">{e.year}</span>
+            <div class="cv-what">{e.degree}, {e.institution}{e.thesis && <p class="sub">{e.thesis}</p>}</div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="appt-h">
+      <h2 id="appt-h" class="section-label">Appointments</h2>
+      <ul class="cv-rows">
+        {cv.appointments.map((a) => (
+          <li class="cv-row"><span class="cv-when">{a.dates}</span><div class="cv-what">{a.title}, {a.institution}</div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="fund-h">
+      <h2 id="fund-h" class="section-label">Fellowships and grants</h2>
+      <ul class="cv-rows">
+        {cv.funding.map((f) => (
+          <li class="cv-row"><span class="cv-when">{f.dates}</span>
+            <div class="cv-what">{f.title}<p class="sub">{f.sponsor}{f.award && `, award ${f.award}`}</p></div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="pub-h">
+      <h2 id="pub-h" class="section-label">Publications</h2>
+      <h3 class="cv-subhead">Peer-reviewed</h3>
+      <ul class="cv-rows">
+        {published.map((p) => (
+          <li class="cv-row"><span class="cv-when">{p.year}</span>
+            <div class="cv-what"><Fragment set:html={authorsHtml(p.authors)} />, {p.year}: {p.title}. <em>{p.journal}</em>{journalDetails(p)}.{" "}
+              {p.doi && <a href={`https://doi.org/${p.doi}`}>doi:{p.doi}</a>}</div></li>
+        ))}
+      </ul>
+      {pending.length > 0 && <>
+        <h3 class="cv-subhead">In review and revision</h3>
+        <ul class="cv-rows">
+          {pending.map((p) => (
+            <li class="cv-row"><span class="cv-when">{statusLabel[p.status]}</span>
+              <div class="cv-what"><Fragment set:html={authorsHtml(p.authors)} />: {p.title}. <em>{p.journal}</em>.</div></li>
+          ))}
+        </ul>
+      </>}
+    </section>
+
+    <section class="cv-section" aria-labelledby="dc-h">
+      <h2 id="dc-h" class="section-label">Software and data</h2>
+      <ul class="cv-rows">
+        {datacode.software.map((s) => (
+          <li class="cv-row"><span class="cv-when">{s.added?.slice(0, 4)}</span>
+            <div class="cv-what">{s.name}{s.short && `: ${s.short}`}. {s.doi && <a href={`https://doi.org/${s.doi}`}>doi:{s.doi}</a>}</div></li>
+        ))}
+        {datacode.datasets.map((d) => (
+          <li class="cv-row"><span class="cv-when">{d.year}</span>
+            <div class="cv-what"><Fragment set:html={authorsHtml(d.authors)} />, {d.year}: {d.title}. {d.publisher}. <a href={`https://doi.org/${d.doi}`}>doi:{d.doi}</a></div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="talk-h">
+      <h2 id="talk-h" class="section-label">Presentations</h2>
+      {invited.length > 0 && <>
+        <h3 class="cv-subhead">Invited talks</h3>
+        <ul class="cv-rows">
+          {invited.map((p) => (
+            <li class="cv-row"><span class="cv-when">{p.year}</span><div class="cv-what">{p.title}. {p.meeting}{p.location && `, ${p.location}`}.</div></li>
+          ))}
+        </ul>
+      </>}
+      <h3 class="cv-subhead">Conference presentations (first author)</h3>
+      <ul class="cv-rows">
+        {conference.map((p) => (
+          <li class="cv-row"><span class="cv-when">{p.year}</span>
+            <div class="cv-what">{p.title}{typeLabel[p.type] && ` (${typeLabel[p.type].toLowerCase()})`}. {p.meeting}{p.location && `, ${p.location}`}.{p.award && <strong> {p.award}.</strong>}
+              <p class="sub"><Fragment set:html={authorsHtml(p.authors)} /></p></div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="award-h">
+      <h2 id="award-h" class="section-label">Awards and honors</h2>
+      <ul class="cv-rows">
+        {awards.map((a) => (
+          <li class="cv-row"><span class="cv-when">{a.year}</span><div class="cv-what">{a.name}{a.org && `, ${a.org}`}</div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="field-h">
+      <h2 id="field-h" class="section-label">Field campaigns</h2>
+      <ul class="cv-rows">
+        {cv.fieldwork.map((f) => (
+          <li class="cv-row"><span class="cv-when">{f.dates}</span>
+            <div class="cv-what">{f.campaign}{f.place && `, ${f.place}`}<p class="sub">{f.role}</p></div></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="teach-h">
+      <h2 id="teach-h" class="section-label">Teaching and mentoring</h2>
+      <ul class="cv-rows">
+        {cv.teaching.map((t) => (
+          <li class="cv-row"><span class="cv-when">{t.dates}</span><div class="cv-what">{t.role}, {t.institution}</div></li>
+        ))}
+        {cv.mentoring.map((m) => <li class="cv-row"><span class="cv-when"></span><div class="cv-what">{m}</div></li>)}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="serv-h">
+      <h2 id="serv-h" class="section-label">Service</h2>
+      <ul class="cv-rows">{cv.service.map((s) => <li class="cv-row"><span class="cv-when"></span><div class="cv-what">{s}</div></li>)}</ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="skill-h">
+      <h2 id="skill-h" class="section-label">Skills</h2>
+      <ul class="cv-rows">
+        {cv.skills.map((s) => <li class="cv-row"><span class="cv-when">{s.label}</span><div class="cv-what">{s.items}</div></li>)}
+      </ul>
+    </section>
+  </div>
+</Base>

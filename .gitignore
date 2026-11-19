@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# built by Typst in the deploy workflow (npm run cv locally)
+public/ian-cornejo-cv.pdf

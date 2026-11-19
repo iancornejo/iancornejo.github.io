@@ -1,0 +1,42 @@
+---
+// The home-page portrait: the photo in a circle hung on a thread among art-glass
+// "balloons" (after the S02 Art glass mockup and Wright's Coonley Playhouse windows).
+import { Image } from "astro:assets";
+import headshot from "../assets/headshot.jpg";
+---
+<div class="hanging">
+  <Image class="hanging-photo" src={headshot} alt="Ian Cornejo" widths={[240, 360, 480]} sizes="240px"
+    loading="eager" fetchpriority="high" />
+  <svg class="hanging-lines" viewBox="0 0 360 440" aria-hidden="true" focusable="false">
+    <g stroke="#2E241D" stroke-width="1">
+      <line x1="135" y1="0" x2="135" y2="145" />
+      <line x1="300" y1="0" x2="300" y2="74" />
+      <line x1="300" y1="118" x2="300" y2="241" />
+      <line x1="338" y1="0" x2="338" y2="163" />
+      <line x1="338" y1="189" x2="338" y2="294" />
+      <line x1="0" y1="430" x2="360" y2="430" />
+    </g>
+    <circle cx="135" cy="265" r="120" fill="none" stroke="#2E241D" stroke-width="1.25" />
+    <circle cx="300" cy="96" r="22" fill="#A3352A" />
+    <circle cx="300" cy="250" r="9" fill="#C98A2E" />
+    <circle cx="338" cy="176" r="13" fill="#2F4B9A" />
+    <circle cx="338" cy="300" r="6" fill="#3F7F62" />
+    <rect x="290" y="392" width="7" height="7" fill="#A3352A" />
+    <rect x="304" y="404" width="7" height="7" fill="#2F4B9A" />
+    <rect x="318" y="392" width="7" height="7" fill="#C98A2E" />
+  </svg>
+</div>
+
+<style>
+  .hanging { position: relative; width: 100%; max-width: 360px; aspect-ratio: 360 / 440; }
+  .hanging-photo {
+    position: absolute;
+    left: 4.1667%;
+    top: 32.955%;
+    width: 66.667%;
+    height: 54.545%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .hanging-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+</style>

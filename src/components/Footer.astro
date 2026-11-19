@@ -1,0 +1,26 @@
+---
+import RadarMark from "./RadarMark.astro";
+import EmailLink from "./EmailLink.astro";
+import { profile, buildTime } from "../lib/content";
+const year = buildTime.getUTCFullYear();
+---
+<footer class="site-footer container">
+  <div class="footer-inner">
+    <div class="footer-id">
+      <RadarMark size={28} />
+      <div>
+        <p class="footer-name">{profile.short_name}</p>
+        <p class="muted">{profile.institution} · {profile.location}</p>
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><EmailLink label="Email" /></li>
+      <li><a href={`https://github.com/${profile.github}`}>GitHub</a></li>
+      <li><a href={`https://orcid.org/${profile.orcid}`}>ORCID</a></li>
+      <li><a href="https://precip.science">precip.science</a></li>
+    </ul>
+    <p class="footer-legal muted">
+      © {year} {profile.short_name} · Text CC BY 4.0 · Code MIT · Figures from published papers © their publishers
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,61 @@
+---
+// One publication: citation, "New!" badge, and a chevron that opens a panel with
+// a figure and the plain-language summary. Native <details>, so it works without JavaScript.
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Badge from "./Badge.astro";
+import Icon from "./Icon.astro";
+import { authorsHtml, journalDetails, newUntil, statusLabel, type PublicationT } from "../lib/content";
+
+interface Props { pub: PublicationT; expandable?: boolean }
+const { pub, expandable = true } = Astro.props;
+
+const figures = import.meta.glob<{ default: ImageMetadata }>("/src/assets/figures/*.{png,jpg,jpeg,webp}", { eager: true });
+const fig = pub.figure ? figures[`/src/assets/figures/${pub.figure.file}`]?.default : undefined;
+if (pub.figure && !fig) {
+  throw new Error(`publications.yaml: figure "${pub.figure.file}" (${pub.id}) is not in src/assets/figures/`);
+}
+const full = fig ? await getImage({ src: fig, width: Math.min(2000, fig.width), format: "webp" }) : undefined;
+const until = newUntil(pub.added);
+const status = statusLabel[pub.status];
+const hasPanel = expandable && (fig || pub.summary);
+---
+<li class="pub">
+  <span class="pub-year">{pub.year ?? ""}</span>
+  <div class="pub-body">
+    <p class="pub-cite">
+      <Fragment set:html={authorsHtml(pub.authors)} />{pub.year ? `, ${pub.year}` : ""}: {pub.title}.{" "}
+      <em>{pub.journal}</em>{journalDetails(pub)}{status ? `, ${status.toLowerCase()}` : ""}.{" "}
+      {pub.doi && <a class="doi" href={`https://doi.org/${pub.doi}`}>doi:{pub.doi}</a>}
+      {until && <Badge kind="new" until={until} />}
+    </p>
+    {hasPanel && (
+      <details class="pub-more">
+        <summary><Icon name="chevron" class="chev" size={16} /><span>Summary and figure</span></summary>
+        <div class="pub-panel">
+          {fig && pub.figure && full && (
+            <figure>
+              <a href={full.src} title="Open the full-size figure">
+                <Image src={fig} alt={pub.figure.alt} widths={[480, 720, 1080].filter((w) => w <= fig.width)}
+                  sizes="(min-width: 1000px) 560px, 92vw" />
+              </a>
+              {pub.figure.caption && <figcaption set:html={pub.figure.caption} />}
+              {pub.figure.credit && <p class="credit">{pub.figure.credit}</p>}
+            </figure>
+          )}
+          {pub.summary && (
+            <div class="pls">
+              <h3 class="caps">Plain-language summary</h3>
+              <p>{pub.summary}</p>
+            </div>
+          )}
+        </div>
+      </details>
+    )}
+    {pub.links.length > 0 && (
+      <p class="pub-links">
+        {pub.links.map((l) => <a class="btn btn-sm" href={l.url}>{l.label}</a>)}
+      </p>
+    )}
+  </div>
+</li>

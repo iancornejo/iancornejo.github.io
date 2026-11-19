@@ -1,0 +1,50 @@
+# Software and datasets for the Data + Code page and the CV, newest first.
+# `added` is the release date; it drives the "New!" badge for about four months.
+
+software:
+  - id: eccopy
+    name: EccoPy
+    short: open-source Python package for ECCO radar echo classification   # one line for the CV
+    added: 2026-08-07
+    summary: >-
+      A data-agnostic Python implementation of ECCO (Echo Classification from COnvectivity),
+      which separates convective from stratiform radar echo. It covers 1-D series, vertical
+      cross-sections, horizontal composites and full 3-D volumes, and works directly on NumPy
+      arrays with no file I/O, so it fits any radar or file format.
+    license: BSD-3-Clause
+    doi: 10.5281/zenodo.21840860        # concept DOI (always the latest release)
+    credit: >-
+      An independent implementation of the ECCO algorithm by U. Romatschke and M. J. Dixon.
+    reference_doi: 10.1175/JTECH-D-22-0019.1
+    links:
+      - label: GitHub
+        url: https://github.com/iancornejo/EccoPy
+      - label: PyPI
+        url: https://pypi.org/project/eccopy/
+      - label: conda-forge
+        url: https://anaconda.org/conda-forge/eccopy
+
+datasets:
+  - id: precip2021-parsivel
+    title: "Pre-CIP 2021: Parsivel Disdrometer Data"
+    authors: [I. C. Cornejo, P. J. Marinescu, M. M. Bell, K. L. Rasmussen, C. C. Nam]
+    year: 2025
+    version: "1.0"
+    publisher: NSF NCAR Earth Observing Laboratory
+    doi: 10.26023/ABMZ-A2Z7-3N14
+    added: 2025-10-27
+    summary: >-
+      Drop size distributions from a Parsivel disdrometer on the CSU Atmospheric Science
+      building in Fort Collins, Colorado, near the CSU-CHILL and CHIVO radars, May–August 2021.
+
+  - id: precip2022-parsivel
+    title: "PRECIP: PARSIVEL Disdrometer Data"
+    authors: [I. C. Cornejo, K. L. Rasmussen, C. C. Nam]
+    year: 2023
+    version: "1.0"
+    publisher: NSF NCAR Earth Observing Laboratory
+    doi: 10.26023/68DF-F1JW-8H04
+    added: 2023-07-13
+    summary: >-
+      Drop size distributions from a PARSIVEL disdrometer on Yonaguni, Japan, near the CSU
+      SEA-POL radar during PRECIP, May–August 2022.

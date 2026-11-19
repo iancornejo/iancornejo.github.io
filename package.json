@@ -9,9 +9,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cv": "typst compile --root . --font-path cv/fonts --ignore-system-fonts cv/cv.typ public/ian-cornejo-cv.pdf"
   },
   "dependencies": {
-    "astro": "^7.4.13"
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13",
+    "yaml": "^2.9.1"
   }
 }

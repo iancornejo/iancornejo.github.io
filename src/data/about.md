@@ -1,0 +1,9 @@
+I'm a radar meteorologist and an NSF AGS Postdoctoral Research Fellow at Colorado State University in Fort Collins. Most of my work comes back to one question: what can radars tell us about how precipitation forms and falls?
+
+A lot of that runs through drop size distributions (DSDs). I'm interested in how different microphysical processes, like collision–coalescence, breakup, evaporation and size sorting, shape particle and drop size distributions, and in how universal those distributions are once you normalize them, for example with double-moment normalization. My NSF fellowship project, *Profiling Drop Size Distributions across Multiple Remote Sensing Platforms*, builds on those questions.
+
+I'm predominantly an observationalist. I like working hands-on with instruments, mostly disdrometers and radars, both scanning and vertically pointing, and I've helped collect data on field campaigns including Pre-CIP 2021 in Colorado and PRECIP 2022 in Taiwan and southern Japan.
+
+I earned my PhD (2026) and MS (2023) in Atmospheric and Oceanic Sciences at the University of Wisconsin–Madison. My dissertation, *Echoes of Extreme Rainfall: Radar Perspectives of Multiscale Precipitation Controls*, followed extreme rainfall in Taiwan from radar rain estimation in steep terrain to the microphysical and mesoscale processes behind it, and it left me with a lasting fascination with Mei-Yu fronts and Taiwan's mountains. Before that, I earned BS degrees in Atmospheric Sciences and Engineering Physics at the University of Illinois Urbana-Champaign.
+
+Outside of core research, I enjoy building open-source software and algorithms that help the field move itself forward. [EccoPy](/data-code/) is one example, and [precip.science](https://precip.science) is where I'm putting experimental real-time radar products.

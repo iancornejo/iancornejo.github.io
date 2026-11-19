@@ -1,0 +1,143 @@
+# Publications, newest first. Used by the Publications page, the home page and the CV.
+#
+# Fields:
+#   id        short unique name (letters, digits and dashes)
+#   status    published | accepted | in-revision | in-review
+#   authors   initials then family name; "I. C. Cornejo" is set in bold
+#   added     date it went public (online publication). Shows a "New!" badge for about
+#             four months after this date, then the badge disappears on its own.
+#   figure    an image in src/assets/figures/ with alt text (plain words, for screen
+#             readers), a caption (may use <sub>…</sub>) and a credit line
+#   summary   plain-language summary, shown when the entry is opened
+#   links     optional buttons for code or data, e.g.
+#               links:
+#                 - label: Code
+#                   url: https://github.com/iancornejo/...
+
+- id: cornejo2026qjrms
+  status: published
+  year: 2026
+  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell, W.-Y. Chang]
+  title: Modeling rainfall drop size distribution moments using an S-band polarimetric radar in complex terrain
+  journal: Quarterly Journal of the Royal Meteorological Society
+  journal_short: Q. J. R. Meteorol. Soc.
+  doi: 10.1002/qj.70254
+  added: 2026-06-30
+  figure:
+    file: cornejo2026qjrms.png
+    alt: >-
+      Scatter plot of the vertical change in ZDR against the vertical change in ZH
+      between 1.0 and 3.5 km in convection, with shaded quadrants labeled size sorting
+      and evaporation, collision-coalescence, break-up and balance. Points are colored
+      by the change in total drop concentration; most fall near the collision-coalescence
+      and balance quadrants.
+    caption: >-
+      Warm-rain process fingerprints in convection (C<sub>v</sub> &gt; 0.5) between 1.0 and
+      3.5 km: vertical changes in Z<sub>H</sub> and Z<sub>DR</sub>, colored by the change in
+      total drop concentration (log<sub>10</sub> M<sub>0</sub>).
+    # TODO: add the license once confirmed (e.g. "CC BY 4.0" if open access).
+    credit: Cornejo et al. (2026), Quarterly Journal of the Royal Meteorological Society.
+  summary: >-
+    Extreme rainfall is fundamentally driven by microphysical processes aloft, which can be
+    strongly influenced by complex terrain. The 2022 Prediction of Rainfall Extremes Campaign
+    in the Pacific (PRECIP 2022) provided a unique opportunity to study these relationships
+    through the deployment of the NSF NCAR S-band dual-polarization radar (S-Pol) in Taiwan,
+    a region characterized by steep topography and frequent extreme precipitation. This study
+    examines a Mei-Yu front case characterized by widespread, long-duration rainfall with
+    embedded deep convective cells occurring both upstream and over Taiwan's topography. Our
+    objective is to link microphysical processes to the varying terrain in context of rainfall
+    during this high-impact event. Microphysical characteristics are inferred from vertical
+    gradients of dual-polarization radar variables and modeled drop size distribution (DSD)
+    moments, supported by ground-based disdrometer observations that resolve both the drizzle
+    and precipitation modes. A normalized double-moment generalized gamma DSD model is applied
+    to S-Pol to obtain DSD moments that are linked to dominant microphysical processes aloft
+    including radar-inferred graupel presence. Results show that collision coalescence is the
+    most frequent warm-rain process in convection, contributing to large drop production and
+    increased rainfall rates. Additionally, graupel presence is associated with precipitation
+    enhancement, with the magnitude of graupel-related amplification increasing with terrain
+    height. This study highlights the benefit of modeling both the drizzle and precipitation
+    modes of the DSD using dual-polarization radars to connect microphysical processes aloft
+    to complex terrain.
+  links: []
+
+- id: cornejo2025jtech
+  status: published
+  year: 2025
+  authors: [I. C. Cornejo, A. K. Rowe, M. J. Dixon, U. Romatschke]
+  title: Specific Attenuation-Based Rain-Rate Applicability to Varying Rainfall Intensity in Complex Terrain
+  journal: Journal of Atmospheric and Oceanic Technology
+  journal_short: J. Atmos. Oceanic Technol.
+  volume: 42
+  pages: 889–907
+  doi: 10.1175/JTECH-D-24-0094.1
+  added: 2025-08-01
+  figure:
+    file: cornejo2025jtech.png
+    alt: >-
+      Flowchart that picks one of four rain-rate estimators, R(A), R(KDP), R(Z, ZDR) or
+      R(Z), for each radar gate, based on echo type, elevation angle, differential phase
+      shift, reflectivity, KDP and ZDR thresholds.
+    caption: >-
+      Decision tree for the new combined technique, which uses R(A) where it performs best
+      and falls back to R(K<sub>DP</sub>), R(Z, Z<sub>DR</sub>) or R(Z) elsewhere.
+    credit: >-
+      Cornejo et al. (2025), Journal of Atmospheric and Oceanic Technology. © Copyright 2025
+      American Meteorological Society (AMS). For permission to reuse any portion of this
+      Work, please contact permissions@ametsoc.org.
+  summary: >-
+    Heavy rainfall is impactful globally, but difficult to accurately measure, especially in
+    remote mountainous regions. Radar is useful for estimating rainfall, but encounters
+    challenges in steep terrain owing to partial or total beam blockage. This study examines
+    the advantages and disadvantages of applying a rain estimation technique based on radar
+    attenuation, or loss of a signal by precipitation, to a 3-month radar deployment in
+    mountainous Taiwan. This technique performed best in extreme rainfall scenarios, but not
+    as well in lighter rainfall. Nearby terrain amplifies errors compared to other rain
+    estimation methods, regardless of intensity. A unique aspect of this study is the
+    development of a new rain-rate estimation technique, combining multiple retrievals to take
+    advantage of their individual strengths.
+  links: []
+
+- id: cornejo2024mwr
+  status: published
+  year: 2024
+  authors: [I. C. Cornejo, A. K. Rowe, K. L. Rasmussen, J. C. DeHart]
+  title: Orographic Controls on Extreme Precipitation Associated with a Mei-Yu Front
+  journal: Monthly Weather Review
+  journal_short: Mon. Wea. Rev.
+  volume: 152
+  issue: 2
+  pages: 531–551
+  doi: 10.1175/MWR-D-23-0170.1
+  added: 2024-02-01
+  figure:
+    file: cornejo2024mwr.png
+    alt: >-
+      Two schematic maps of Taiwan comparing the control simulation in red with the
+      halved-terrain simulation in blue: (a) the low-level jet and front over northern
+      Taiwan, and (b) the winds and front position over central Taiwan, with rain symbols
+      where heavy rain falls in each run.
+    caption: >-
+      How Taiwan's terrain steers the mei-yu front over (a) northern and (b) central Taiwan,
+      comparing the control simulation (red) with halved terrain (Half-T, blue).
+    credit: >-
+      Cornejo et al. (2024), Monthly Weather Review. © Copyright 2024 American Meteorological
+      Society (AMS). For permission to reuse any portion of this Work, please contact
+      permissions@ametsoc.org.
+  summary: >-
+    This study examines the impact of terrain on rainfall intensity, duration, and location.
+    A mei-yu front, an East Asian weather front known for producing heavy, long-lasting
+    rainfall, was simulated for an extreme rain event in Taiwan with mountain heights halved
+    as a sensitivity test. Reducing terrain decreased rainfall duration in northern and
+    central Taiwan. Decreases in rainfall duration for both regions is attributed to increased
+    mei-yu front propagation speed. This increase in northern Taiwan is attributed to a
+    weakened barrier jet, a low-level jet induced by flow blocked by the steep mountains of
+    Taiwan. A unique finding of this work is a change in winds north of the front controlling
+    movement of the front near the mountains in central Taiwan.
+  links: []
+
+- id: cornejo-jgr-meiyu
+  status: in-revision
+  authors: [I. C. Cornejo, A. K. Rowe, K.-S. Chung, S.-K. Yang, J. C. DeHart]
+  title: Leveraging Observations and Ensemble Model Skill to Identify Mesoscale Drivers of Extreme Mei-Yu Rainfall
+  journal: "Journal of Geophysical Research: Atmospheres"
+  journal_short: "J. Geophys. Res. Atmos."

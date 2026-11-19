@@ -1,0 +1,36 @@
+---
+import RadarMark from "./RadarMark.astro";
+import DropMark from "./DropMark.astro";
+import Icon from "./Icon.astro";
+import { profile } from "../lib/content";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/publications/", label: "Publications" },
+  { href: "/data-code/", label: "Data + Code" },
+  { href: "/cv/", label: "CV" },
+  { href: "/about/", label: "About" },
+];
+const path = Astro.url.pathname.replace(/index\.html$/, "");
+const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+<div class="container">
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label={`${profile.short_name}, home`}>
+    <RadarMark size={34} />
+    <span>{profile.short_name}</span>
+  </a>
+  <nav aria-label="Main">
+    <ul>
+      {links.map((l) => (
+        <li><a href={l.href} aria-current={isCurrent(l.href) ? "page" : undefined}>{l.label}</a></li>
+      ))}
+      <li>
+        <a class="nav-precip" href="https://precip.science">
+          <DropMark size={13} />precip.science<Icon name="external" size={12} />
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+</div>

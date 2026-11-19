@@ -1,0 +1,57 @@
+# Who you are. Used by the home page, the About page, the footer and the CV header.
+# To edit: open this file on GitHub, click the pencil, change it, commit. The site
+# redeploys in a few minutes. Wrap text with a colon (:) or a # in quotes.
+
+name: Ian C. Cornejo
+short_name: Ian Cornejo
+eyebrow: Radar meteorology · Precipitation physics
+position: NSF AGS Postdoctoral Research Fellow
+institution: Colorado State University
+location: Fort Collins, Colorado
+office: ATS Main 215, Colorado State University
+email:            # shown as a link that's assembled in the browser, to slow down spam bots
+  user: ian.cornejo
+  domain: colostate.edu
+orcid: "0009-0007-7030-9790"
+github: iancornejo
+
+# The sentence under your name on the home page.
+lead: >-
+  I use radars and disdrometers to learn how rain forms and falls, from the
+  microphysics aloft to the drops that reach the ground, especially where
+  mountains get involved.
+
+# Research-interest cards on the home page. Keep each to a sentence or two.
+interests:
+  - title: Radar microphysics
+    text: >-
+      Using radars, especially dual-polarization radars, to learn what
+      precipitation is doing aloft: how drops grow, break up and evaporate on
+      their way down.
+  - title: Drop size distributions
+    text: >-
+      How different microphysical processes shape particle and drop size
+      distributions, and how universal those distributions are, for example
+      under double-moment normalization.
+  - title: Instruments and observations
+    text: >-
+      I'm an observationalist at heart. I like working hands-on with
+      instruments, mostly disdrometers and radars, both scanning and
+      vertically pointing.
+  - title: Mei-Yu fronts and terrain
+    text: >-
+      Mesoscale meteorology where it meets precipitation, especially Mei-Yu
+      fronts and how Taiwan's mountains shape their rainfall.
+  - title: Open-source tools
+    text: >-
+      Software and algorithms that are open source and help the field move
+      itself forward, like EccoPy.
+
+# Site settings
+site:
+  # Cloudflare Web Analytics token (D20). Paste the token from Cloudflare >
+  # Web Analytics > Add a site (hostname iancornejo.github.io) between the quotes.
+  # Leave empty to turn analytics off.
+  cloudflare_analytics_token: ""
+  # How long the "New!" badge stays on an item after its `added` date, in days.
+  new_badge_days: 120
