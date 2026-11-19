@@ -7,7 +7,7 @@
 #   added     date it went public (online publication). Shows a "New!" badge for about
 #             four months after this date, then the badge disappears on its own.
 #   figure    an image in src/assets/figures/ with alt text (plain words, for screen
-#             readers), a caption (may use <sub>…</sub>) and a credit line
+#             readers), a caption and a credit line (both may use <sub>…</sub> and links)
 #   summary   plain-language summary, shown when the entry is opened
 #   links     optional buttons for code or data, e.g.
 #               links:
@@ -35,8 +35,10 @@
       Warm-rain process fingerprints in convection (C<sub>v</sub> &gt; 0.5) between 1.0 and
       3.5 km: vertical changes in Z<sub>H</sub> and Z<sub>DR</sub>, colored by the change in
       total drop concentration (log<sub>10</sub> M<sub>0</sub>).
-    # TODO: add the license once confirmed (e.g. "CC BY 4.0" if open access).
-    credit: Cornejo et al. (2026), Quarterly Journal of the Royal Meteorological Society.
+    credit: >-
+      Cornejo et al. (2026), Quarterly Journal of the Royal Meteorological Society. © 2026 The
+      Author(s), published by John Wiley & Sons Ltd on behalf of the Royal Meteorological
+      Society under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
   summary: >-
     Extreme rainfall is fundamentally driven by microphysical processes aloft, which can be
     strongly influenced by complex terrain. The 2022 Prediction of Rainfall Extremes Campaign

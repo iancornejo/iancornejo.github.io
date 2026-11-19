@@ -141,6 +141,8 @@ a.link:hover, .prose a:hover, .pub-cite a:hover, .footer-links a:hover, .cv a:ho
 .tag { padding: 0 6px; border: 1px solid var(--color-rule-strong); font-size: 0.75rem; line-height: 1.6; letter-spacing: 0.04em; }
 .award { display: inline-flex; align-items: center; gap: 4px; color: var(--glass-ochre-text); font-weight: var(--weight-semibold); }
 .award svg { color: var(--glass-ochre); }
+.poster-link { display: inline-flex; align-items: center; gap: 4px; color: var(--color-link); font-weight: var(--weight-semibold); }
+.poster-link:hover { color: var(--color-accent); }
 .poster-panel { padding: var(--space-4); background: var(--color-inset); border: var(--rule); max-width: 520px; }
 .poster-panel img { display: block; width: 100%; border: var(--rule); }
 

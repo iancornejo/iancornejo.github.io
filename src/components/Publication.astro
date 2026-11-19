@@ -40,7 +40,7 @@ const hasPanel = expandable && (fig || pub.summary);
                   sizes="(min-width: 1000px) 560px, 92vw" />
               </a>
               {pub.figure.caption && <figcaption set:html={pub.figure.caption} />}
-              {pub.figure.credit && <p class="credit">{pub.figure.credit}</p>}
+              {pub.figure.credit && <p class="credit" set:html={pub.figure.credit} />}
             </figure>
           )}
           {pub.summary && (

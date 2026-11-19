@@ -1,6 +1,7 @@
 # CV sections that aren't on other pages. Publications, presentations, software and
 # datasets come from their own files, so each fact lives in one place.
 # `dates` are free text, shown as written (e.g. "Aug 2026–present").
+# Phone number and street address stay off the website on purpose.
 
 education:
   - degree: PhD, Atmospheric and Oceanic Sciences
@@ -28,8 +29,8 @@ appointments:
   - title: Postdoctoral Fellow
     institution: University of Wisconsin–Madison
     dates: May–Jun 2026
-  - title: Graduate Visitor, NCAR Graduate Visitor Program
-    institution: NSF NCAR Earth Observing Laboratory, Remote Sensing Facility
+  - title: Graduate Visitor Program
+    institution: NSF NCAR Earth Observing Laboratory, Remote Sensing Facility, Boulder
     dates: "2023"
 
 funding:
@@ -40,45 +41,75 @@ funding:
 
 # Awards other than presentation awards (those come from presentations.yaml).
 awards:
-  - name: Wahl TA Award
-    org: UW–Madison
+  - name: Wahl Award for Excellence as a Teaching Assistant
+    org: UW–Madison Atmospheric and Oceanic Sciences
     year: 2025
   - name: Lettau Award
+    org: UW–Madison Atmospheric and Oceanic Sciences
+    year: 2023
+  - name: Reid Bryson Scholarship Award, AOSS Community Poster Reception
     org: UW–Madison
     year: 2023
-  - name: Reid Bryson Scholarship
-    org: UW–Madison
-    year: 2023
-  - name: AOS First-Year Graduate Student Award
-    org: UW–Madison
+  - name: First-Year Graduate Student Award
+    org: UW–Madison Atmospheric and Oceanic Sciences
     year: 2021
 
 fieldwork:
   - campaign: PRECIP 2022, Prediction of Rainfall Extremes Campaign in the Pacific
     place: Taiwan and southern Japan
-    role: Participant, science team
+    role: Participant and science team member
     dates: "2022"
   - campaign: Pre-CIP 2021, Preparatory Rockies Experiment for the Campaign in the Pacific
     place: Colorado
-    role: Participant, science team
+    role: Participant and science team member
     dates: "2021"
 
+# Workshops and meetings attended, newest first (presentations at them are listed
+# in presentations.yaml).
+workshops:
+  - name: INCUS Science Team Meeting
+    place: ""          # TODO: location
+    dates: Nov 2026
+  - name: NSF NCAR Radar Technology Community Workshop
+    place: Boulder, Colorado
+    dates: Mar 2026
+  - name: "Innovations in Open Science (IOS) Planning Workshop: Community Expectations for a Geoscience Data Commons"
+    place: NSF NCAR, Boulder, Colorado
+    dates: May 2024
+
 teaching:
-  - role: Teaching Assistant, AOS 453
+  - role: Teaching Assistant, Synoptic Lab II, Mesoscale Meteorology (AOS 453)
     institution: University of Wisconsin–Madison
-    dates: Spring 2023–2025
+    dates: Spring 2023, 2024, 2025
 
 mentoring:
-  - Mentored three REU students    # TODO: names and years
+  - "Research Experience for Undergraduates (REU) mentor: Night Zawlocki, Xander Turner, Ivan Sloan"
 
 service:
-  - Session chair, AMS Conference on Radar Meteorology (2025, 2023)
-  - Session chair, AMS Conference on Mesoscale Processes (2023)
-  - "Reviewer: Scientific Reports; Journal of Geophysical Research: Atmospheres; Terrestrial, Atmospheric and Oceanic Sciences; Journal of Atmospheric and Oceanic Technology; Monthly Weather Review"
-  # TODO: UW–Madison committees
+  - group: Science leadership
+    items:
+      - Session chair, AMS 41st International Conference on Radar Meteorology (2025)
+      - Session chair, AMS 40th Conference on Radar Meteorology (2023)
+      - Session chair, AMS 20th Conference on Mesoscale Processes (2023)
+      - Student assistant, AMS 20th Conference on Mesoscale Processes (2023)
+      - Student assistant, AMS Collective Madison Meeting (2022)
+  - group: Journal reviewer
+    items:
+      - Monthly Weather Review (2024–present)
+      - Journal of Atmospheric and Oceanic Technology (2025–present)
+      - "Journal of Geophysical Research: Atmospheres (2026–present)"
+      - Scientific Reports (2026–present)
+      - Terrestrial, Atmospheric and Oceanic Sciences (2026–present)
+  - group: University of Wisconsin–Madison
+    items:
+      - Member, Colloquium Committee (2025–2026)      # check: still a member?
+      - Graduate student representative, Curriculum Board (2023–2024)
+      - Graduate student representative, Graduate Program Board (2023–2024)
+      - Facilitator, High Impact Weather Group (2023)
+      - STORM REU applicant reviewer (2023, 2024, 2026)
 
 skills:
   - label: Programming
-    items: Python, MATLAB, NCL, shell, Julia, C++, Fortran
+    items: Python (proficient); MATLAB, NCL, shell scripting (intermediate); Julia, C++, Fortran (beginner)
   - label: Models
-    items: WRF
+    items: Weather Research and Forecasting (WRF) Model

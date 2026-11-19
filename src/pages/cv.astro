@@ -138,6 +138,17 @@ const updated = buildTime.toLocaleDateString("en-US", { year: "numeric", month: 
       </ul>
     </section>
 
+    {cv.workshops.length > 0 && (
+      <section class="cv-section" aria-labelledby="ws-h">
+        <h2 id="ws-h" class="section-label">Workshops and meetings</h2>
+        <ul class="cv-rows">
+          {cv.workshops.map((w) => (
+            <li class="cv-row"><span class="cv-when">{w.dates}</span><div class="cv-what">{w.name}{w.place && `, ${w.place}`}</div></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <section class="cv-section" aria-labelledby="teach-h">
       <h2 id="teach-h" class="section-label">Teaching and mentoring</h2>
       <ul class="cv-rows">
@@ -150,7 +161,12 @@ const updated = buildTime.toLocaleDateString("en-US", { year: "numeric", month: 
 
     <section class="cv-section" aria-labelledby="serv-h">
       <h2 id="serv-h" class="section-label">Service</h2>
-      <ul class="cv-rows">{cv.service.map((s) => <li class="cv-row"><span class="cv-when"></span><div class="cv-what">{s}</div></li>)}</ul>
+      {cv.service.map((g) => (
+        <>
+          <h3 class="cv-subhead">{g.group}</h3>
+          <ul class="cv-rows">{g.items.map((s) => <li class="cv-row"><span class="cv-when"></span><div class="cv-what">{s}</div></li>)}</ul>
+        </>
+      ))}
     </section>
 
     <section class="cv-section" aria-labelledby="skill-h">

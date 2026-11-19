@@ -6,7 +6,7 @@
 //   typst compile --root . --font-path cv/fonts \
 //     --input sections=education,appointments,funding,publications,awards cv/cv.typ cv-short.pdf
 // Sections: education appointments funding publications software presentations awards
-//           fieldwork teaching service skills
+//           fieldwork workshops teaching service skills
 
 #let profile = yaml("/src/data/profile.yaml")
 #let pubs = yaml("/src/data/publications.yaml")
@@ -23,7 +23,7 @@
 
 #let all-sections = (
   "education", "appointments", "funding", "publications", "software", "presentations",
-  "awards", "fieldwork", "teaching", "service", "skills",
+  "awards", "fieldwork", "workshops", "teaching", "service", "skills",
 )
 #let chosen = if "sections" in sys.inputs {
   sys.inputs.sections.split(",").map(s => s.trim())
@@ -179,12 +179,21 @@
       row(str(f.dates), [#(f.campaign)#if "place" in f [, #(f.place)] \ #sub(f.role)])
     }
   }),
+  workshops: () => section("Workshops and meetings", {
+    for w in cv.at("workshops", default: ()) {
+      let place = w.at("place", default: "")
+      row(str(w.dates), [#(w.name)#if place != "" and place != none [, #place]])
+    }
+  }),
   teaching: () => section("Teaching and mentoring", {
     for t in cv.teaching { row(str(t.dates), [#t.role, #t.institution]) }
     for m in cv.at("mentoring", default: ()) { row([], [#m]) }
   }),
   service: () => section("Service", {
-    for s in cv.at("service", default: ()) { row([], [#s]) }
+    for g in cv.at("service", default: ()) {
+      subhead(g.group)
+      for s in g.items { row([], [#s]) }
+    }
   }),
   skills: () => section("Skills", {
     for s in cv.at("skills", default: ()) { row(s.label, [#s.items]) }

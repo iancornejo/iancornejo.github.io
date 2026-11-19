@@ -6,8 +6,11 @@
 #   ends      last day of the meeting (YYYY-MM-DD); before then it's tagged "Upcoming"
 #   type      talk | poster | invited (leave empty if unsure)
 #   award     e.g. "1st Place Poster"
-#   poster    optional: a PDF in public/posters/ plus a preview image in
-#             src/assets/posters/, which adds an expandable preview, e.g.
+#   poster    optional. Either a link to a copy hosted elsewhere:
+#               poster:
+#                 url: https://...
+#             or a PDF in public/posters/ plus a preview image in src/assets/posters/,
+#             which adds a chevron that opens the preview:
 #               poster:
 #                 pdf: radar2025.pdf
 #                 image: radar2025.jpg
@@ -17,9 +20,19 @@
   location: Denver, Colorado
   year: 2027
   ends: 2027-01-14
-  type: ""            # TODO: talk or poster?
+  type: poster
   title: "Catching the Drizzle: Validating Complete Profiled Drop Size Distributions from a Snow-Level Radar During TIME-SLICE CO"
   authors: [I. C. Cornejo, B. Dolan, M. M. Bell, C. Williams]
+
+- id: rtcw2026-microphysics
+  meeting: NSF NCAR Radar Technology Community Workshop
+  location: Boulder, Colorado
+  year: 2026
+  type: poster
+  title: Radar-Derived Insights of Microphysical Processes Using the NSF NCAR S-Pol Radar
+  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell, W.-Y. Chang]
+  poster:
+    url: https://www.eol.ucar.edu/sites/default/files/2026-03/posterradar-derived-insights-microphysical-processes-using-nsf-ncar-s-pol-radarcornejo.pdf
 
 - id: radar2025-microphysics
   meeting: AMS 41st International Conference on Radar Meteorology
@@ -30,15 +43,6 @@
   authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell, W.-Y. Chang]
   award: 1st Place Poster
 
-- id: icmcs2024-microphysics
-  meeting: 16th International Conference on Mesoscale Convective Systems (ICMCS)
-  location: Gyeongju, South Korea
-  year: 2024
-  type: ""            # TODO: talk or poster?
-  title: Microphysical Processes leading to Heavy Mei-Yu Rainfall near Complex Terrain during PRECIP/TAHOPE
-  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell]
-  award: Outstanding Student Presentation   # TODO: confirm which 2024 presentation won
-
 - id: icmcs2024-attenuation
   meeting: 16th International Conference on Mesoscale Convective Systems (ICMCS)
   location: Gyeongju, South Korea
@@ -46,12 +50,22 @@
   type: talk
   title: Specific Attenuation-based Rain Rate Applicability to the PRECIP/TAHOPE S-Pol Dataset near Complex Terrain
   authors: [I. C. Cornejo, A. K. Rowe, U. Romatschke, M. J. Dixon]
+  award: Outstanding Student Presentation
+
+- id: icmcs2024-microphysics
+  meeting: 16th International Conference on Mesoscale Convective Systems (ICMCS)
+  location: Gyeongju, South Korea
+  year: 2024
+  type: poster
+  title: Microphysical Processes leading to Heavy Mei-Yu Rainfall near Complex Terrain during PRECIP/TAHOPE
+  authors: [I. C. Cornejo, A. K. Rowe, M. M. Bell]
 
 - id: eol2023-seminar
-  meeting: NCAR EOL Seminar Series
+  meeting: NCAR Earth Observing Laboratory Seminar Series
+  location: Boulder, Colorado
   year: 2023
   type: invited
-  title: S-Pol during PRECIP/TAHOPE 2022      # TODO: check the talk's exact title
+  title: "Extreme Rainfall in Taiwan: Observations from NCAR's S-Pol Radar during PRECIP/TAHOPE 2022"
   authors: [I. C. Cornejo]
 
 - id: radar2023-retrievals

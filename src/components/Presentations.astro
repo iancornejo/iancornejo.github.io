@@ -22,6 +22,7 @@ const groups = groupPresentations(presentations);
         <ul class="talk-items">
           {g.items.map((p) => {
             const img = p.poster?.image ? posters[`/src/assets/posters/${p.poster.image}`]?.default : undefined;
+            const posterHref = p.poster ? (p.poster.url ?? `/posters/${p.poster.pdf}`) : undefined;
             return (
               <li>
                 <p class="talk-title">{p.title}</p>
@@ -29,15 +30,16 @@ const groups = groupPresentations(presentations);
                   <span set:html={authorsHtml(p.authors)} />
                   {typeLabel[p.type] && <span class="tag">{typeLabel[p.type]}</span>}
                   {p.award && <span class="award"><Icon name="star" size={12} />{p.award}</span>}
+                  {posterHref && !img && <a class="poster-link" href={posterHref}>Poster (PDF)<Icon name="external" size={11} /></a>}
                 </p>
-                {p.poster && (
+                {posterHref && img && (
                   <details class="pub-more">
                     <summary><Icon name="chevron" class="chev" size={16} /><span>Poster</span></summary>
                     <div class="poster-panel">
-                      <a href={`/posters/${p.poster.pdf}`}>
-                        {img ? <Image src={img} alt={`Poster: ${p.title}`} widths={[480, 960]} sizes="(min-width: 800px) 480px, 92vw" /> : "Open the poster (PDF)"}
+                      <a href={posterHref}>
+                        <Image src={img} alt={`Poster: ${p.title}`} widths={[480, 960]} sizes="(min-width: 800px) 480px, 92vw" />
                       </a>
-                      <p class="credit"><a href={`/posters/${p.poster.pdf}`}>Full poster (PDF)</a></p>
+                      <p class="credit"><a href={posterHref}>Full poster (PDF)</a></p>
                     </div>
                   </details>
                 )}

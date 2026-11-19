@@ -63,7 +63,10 @@ const Presentation = z.object({
   title: text,
   authors: z.array(text).min(1),
   award: z.string().optional(),
-  poster: z.object({ pdf: text, image: text.optional() }).optional(),
+  poster: z
+    .object({ pdf: text.optional(), url: z.url().optional(), image: text.optional() })
+    .refine((p) => p.pdf || p.url, "give a pdf (in public/posters/) or a url")
+    .optional(),
 });
 
 const DataCode = z.object({
@@ -108,9 +111,12 @@ const CV = z.object({
   fieldwork: z.array(
     z.object({ campaign: text, place: z.string().optional(), role: text, dates: z.coerce.string() }),
   ),
+  workshops: z
+    .array(z.object({ name: text, place: z.string().optional(), dates: z.coerce.string() }))
+    .default([]),
   teaching: z.array(z.object({ role: text, institution: text, dates: z.coerce.string() })),
   mentoring: z.array(text).default([]),
-  service: z.array(text).default([]),
+  service: z.array(z.object({ group: text, items: z.array(text) })).default([]),
   skills: z.array(z.object({ label: text, items: text })).default([]),
 });
 
