@@ -24,14 +24,14 @@ lead: >-
 interests:
   - title: Radar microphysics
     text: >-
-      Using radars, especially dual-polarization radars, to learn what
+      Using radars, especially dual-polarization and FMCW radars, to learn what
       precipitation is doing aloft: how drops grow, break up and evaporate on
       their way down.
   - title: Drop size distributions
     text: >-
       How different microphysical processes shape particle and drop size
-      distributions, and how universal those distributions are, for example
-      under double-moment normalization.
+      distributions, and how universal those distributions are across a 
+      diverse array of environments.
   - title: Instruments and observations
     text: >-
       I'm an observationalist at heart. I like working hands-on with
@@ -39,8 +39,8 @@ interests:
       vertically pointing.
   - title: Mei-Yu fronts and terrain
     text: >-
-      Mesoscale meteorology where it meets precipitation, especially Mei-Yu
-      fronts and how Taiwan's mountains shape their rainfall.
+      The intersection between mesoscale meteorology and precipitation, 
+      especially Mei-Yu fronts and how Taiwan's mountains shape their rainfall.
   - title: Open-source tools
     text: >-
       Software and algorithms that are open source and help the field move
