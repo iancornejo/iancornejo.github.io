@@ -15,7 +15,9 @@ software:
     doi: 10.5281/zenodo.21840860        # concept DOI (always the latest release)
     credit: >-
       An independent implementation of the ECCO algorithm by U. Romatschke and M. J. Dixon.
-    reference_doi: 10.1175/JTECH-D-22-0019.1
+    reference_doi:   # Dixon and Romatschke (2022), then Romatschke and Dixon (2022), as in EccoPy's CITATION.cff
+      - 10.1175/JTECH-D-22-0018.1
+      - 10.1175/JTECH-D-22-0019.1
     links:
       - label: GitHub
         url: https://github.com/iancornejo/EccoPy

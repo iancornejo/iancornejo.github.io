@@ -18,8 +18,8 @@ import { authorsHtml, datacode, newUntil } from "../lib/content";
           <li class="dc-item">
             <h3>{s.name}{until && <Badge kind="new" until={until} />}</h3>
             <p>{s.summary}</p>
-            {(s.credit || s.reference_doi) && (
-              <p class="muted">{s.credit}{s.reference_doi && <> Algorithm reference: <a href={`https://doi.org/${s.reference_doi}`}>doi:{s.reference_doi}</a>.</>}</p>
+            {(s.credit || s.reference_doi.length > 0) && (
+              <p class="muted">{s.credit}{s.reference_doi.length > 0 && <> Algorithm {s.reference_doi.length > 1 ? "references" : "reference"}:{" "}{s.reference_doi.map((d, i) => <>{i > 0 && (i === s.reference_doi.length - 1 ? " and " : ", ")}<a href={`https://doi.org/${d}`}>doi:{d}</a></>)}.</>}</p>
             )}
             <p class="muted">
               {s.doi && <>Cite as <a href={`https://doi.org/${s.doi}`}>doi:{s.doi}</a>. </>}

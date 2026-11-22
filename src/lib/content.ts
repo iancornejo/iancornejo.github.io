@@ -91,7 +91,9 @@ const DataCode = z.object({
       license: z.string().optional(),
       doi: z.string().optional(),
       credit: z.string().optional(),
-      reference_doi: z.string().optional(),
+      // One DOI or a list; shown as "Algorithm reference(s)" on the Data + Code page.
+      reference_doi: z.union([z.string(), z.array(z.string())]).optional()
+        .transform((v) => (v === undefined ? [] : Array.isArray(v) ? v : [v])),
       links: z.array(link).default([]),
     }),
   ),
