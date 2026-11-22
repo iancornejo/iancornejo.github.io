@@ -1,5 +1,6 @@
 ---
 import RadarMark from "./RadarMark.astro";
+import DropMark from "./DropMark.astro";
 import EmailLink from "./EmailLink.astro";
 import { profile, buildTime } from "../lib/content";
 const year = buildTime.getUTCFullYear();
@@ -17,7 +18,7 @@ const year = buildTime.getUTCFullYear();
       <li><EmailLink label="Email" /></li>
       <li><a href={`https://github.com/${profile.github}`}>GitHub</a></li>
       <li><a href={`https://orcid.org/${profile.orcid}`}>ORCID</a></li>
-      <li><a href="https://precip.science">precip.science</a></li>
+      <li><a class="footer-precip" href="https://precip.science"><DropMark size={11} />precip.science</a></li>
     </ul>
     <p class="footer-legal muted">
       © {year} {profile.name} · Text CC BY 4.0 · Code MIT · Figures from published papers © their publishers

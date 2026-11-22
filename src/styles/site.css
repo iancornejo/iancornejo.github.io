@@ -181,6 +181,33 @@ a.link:hover, .prose a:hover, .pub-cite a:hover, .footer-links a:hover, .cv a:ho
 .footer-id .muted, .footer-legal { font-size: var(--text-sm); }
 .footer-links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); font-weight: var(--weight-medium); }
 .footer-legal { flex-basis: 100%; }
+.footer-precip { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------- lab and join (switched in profile.yaml) ---------- */
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-7) var(--space-8); margin: 0; padding: 0; list-style: none; }
+.person { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.person-photo { display: block; width: 6rem; height: 6rem; border-radius: 50%; object-fit: cover; border: 1px solid var(--color-text); }
+.person-initials { display: grid; place-items: center; background: var(--color-surface); font-size: 1.5rem; font-weight: var(--weight-semibold); color: var(--color-text-muted); }
+.person h3 { font-size: var(--text-lead); }
+.person h3 a { text-decoration: none; }
+.person h3 a:hover { text-decoration: underline; }
+.person-role { margin-top: var(--space-1); font-size: var(--text-sm); color: var(--color-text-muted); }
+.person-summary { margin-top: var(--space-2); font-size: 1rem; }
+.person-links { margin-top: var(--space-2); font-size: var(--text-sm); font-weight: var(--weight-medium); }
+.person-links a { color: var(--color-link); }
+.alumni { display: grid; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.alumni strong { font-weight: var(--weight-semibold); }
+
+.openings { display: grid; gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
+.opening { max-width: 48em; padding: var(--space-6); border: 1px solid var(--color-rule-strong); }
+.opening-kind { font-size: var(--text-caps); font-weight: var(--weight-medium); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--color-accent); }
+.opening h3 { margin: var(--space-2) 0; font-size: var(--text-lead); }
+.opening-meta { font-size: var(--text-sm); color: var(--color-text-muted); }
+.opening-meta strong { font-weight: var(--weight-semibold); color: var(--color-text); }
+.opening-summary { margin-block: var(--space-3) var(--space-4); }
+.openings-none { max-width: 42em; }
+.openings-none p + p { margin-top: var(--space-4); }
+.openings-note { margin-top: var(--space-5); font-size: var(--text-sm); }
 
 /* ---------- small screens ---------- */
 @media (max-width: 720px) {
@@ -189,6 +216,9 @@ a.link:hover, .prose a:hover, .pub-cite a:hover, .footer-links a:hover, .cv a:ho
   .pub-panel { grid-template-columns: minmax(0, 1fr); padding: var(--space-4); }
   .cv-row { grid-template-columns: minmax(0, 1fr); }
   .about { grid-template-columns: minmax(0, 1fr); }
+  .person { grid-template-columns: 4.5rem minmax(0, 1fr); gap: var(--space-4); }
+  .person-photo { width: 4.5rem; height: 4.5rem; }
+  .opening { padding: var(--space-5); }
   .band { padding: var(--space-5); }
   .hero { padding-block: var(--space-7) var(--space-8); }
 }

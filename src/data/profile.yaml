@@ -53,3 +53,10 @@ site:
   cloudflare_analytics_token: ""
   # How long the "New!" badge stays on an item after its `added` date, in days.
   new_badge_days: 120
+  # The Lab (people.yaml) and Join (openings.yaml) pages: "off" (not built), "preview"
+  # (built at /lab/ or /join/ so you can check them, but not in the menu or the sitemap,
+  # and hidden from search engines), or "on" (in the menu).
+  lab_page: "off"
+  join_page: "off"
+  # Time zone for opening deadlines: an opening closes at 11:59 PM here on its deadline.
+  timezone: America/Denver

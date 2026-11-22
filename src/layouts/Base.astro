@@ -7,9 +7,10 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { profile } from "../lib/content";
 
-interface Props { title?: string; description?: string }
+interface Props { title?: string; description?: string; noindex?: boolean }
 const {
   title,
+  noindex = false,
   description = `${profile.name}, ${profile.position} at ${profile.institution}: radar meteorology, drop size distributions and precipitation microphysics.`,
 } = Astro.props;
 const fullTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.eyebrow}`;
@@ -25,6 +26,7 @@ const token = profile.site.cloudflare_analytics_token;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -53,6 +55,17 @@ const token = profile.site.cloudflare_analytics_token;
         var now = Date.now();
         document.querySelectorAll("[data-until]").forEach(function (el) {
           if (Date.parse(el.getAttribute("data-until") + "T23:59:59Z") < now) el.remove();
+        });
+        // Remove job openings whose deadline has passed; show the "no openings" note if none are left.
+        document.querySelectorAll("[data-closes]").forEach(function (el) {
+          if (Date.parse(el.getAttribute("data-closes")) >= now) return;
+          var list = el.parentElement;
+          el.remove();
+          if (list && !list.children.length) {
+            var none = document.getElementById(list.getAttribute("data-empty"));
+            if (none) none.hidden = false;
+            list.remove();
+          }
         });
         // Assemble email links (D19).
         document.querySelectorAll("a[data-u][data-d]").forEach(function (a) {

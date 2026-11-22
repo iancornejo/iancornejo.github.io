@@ -9,6 +9,9 @@ const links = [
   { href: "/publications/", label: "Publications" },
   { href: "/data-code/", label: "Data + Code" },
   { href: "/cv/", label: "CV" },
+  // Lab and Join appear only when switched "on" in profile.yaml (D25: hidden for now).
+  ...(profile.site.lab_page === "on" ? [{ href: "/lab/", label: "Lab" }] : []),
+  ...(profile.site.join_page === "on" ? [{ href: "/join/", label: "Join" }] : []),
   { href: "/about/", label: "About" },
 ];
 const path = Astro.url.pathname.replace(/index\.html$/, "");

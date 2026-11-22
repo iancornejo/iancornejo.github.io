@@ -1,0 +1,23 @@
+# Lab members, for the Lab page (/lab/). The page is switched off until `lab_page` in
+# profile.yaml is "preview" (built but hidden) or "on" (in the menu).
+# To edit: open this file on GitHub, click the pencil, change it, commit. The site
+# redeploys in a few minutes. Wrap text with a colon (:) or a # in quotes.
+
+# A sentence or two about the group, shown under the page title. Write it before switching the page on.
+intro: ""
+
+# One entry per person; the page lists you first, from profile.yaml. Copy the example
+# below the `people:` line and remove the # marks.
+#   role:  postdoc | phd | ms | undergrad | staff | visitor  (sets the order and label)
+#   until: the year they left; past that year they move to Alumni
+#   now:   where they went next (alumni only)
+#   photo: a square photo file in src/assets/people/ (optional)
+people:
+  # - name: Jane Doe
+  #   role: phd
+  #   since: 2027
+  #   summary: Drop size distributions in mountain rainfall.
+  #   photo: jane-doe.jpg
+  #   links:
+  #     - label: Website
+  #       url: https://example.com

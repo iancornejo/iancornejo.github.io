@@ -1,0 +1,76 @@
+---
+// The Lab page (/lab/), from src/data/people.yaml. Built only when `lab_page` in
+// profile.yaml is "preview" (hidden: no menu link, noindex) or "on".
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Base from "../../layouts/Base.astro";
+import headshot from "../../assets/headshot.jpg";
+import { profile, lab, labPeople, roleLabel } from "../../lib/content";
+
+export function getStaticPaths() {
+  return profile.site.lab_page === "off" ? [] : [{ params: { slug: undefined } }];
+}
+
+const photos = import.meta.glob<{ default: ImageMetadata }>("/src/assets/people/*.{png,jpg,jpeg,webp}", { eager: true });
+function photoFor(file?: string) {
+  if (!file) return undefined;
+  const img = photos[`/src/assets/people/${file}`]?.default;
+  if (!img) throw new Error(`people.yaml: photo "${file}" is not in src/assets/people/`);
+  return img;
+}
+const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).filter(Boolean).slice(0, 2).join("");
+const { current, alumni } = labPeople();
+---
+<Base title="Lab" description={`People in ${profile.name}'s research group: radar meteorology and precipitation physics.`}
+  noindex={profile.site.lab_page === "preview"}>
+  <header class="page-head">
+    <h1>Lab</h1>
+    {lab.intro && <p class="lead">{lab.intro}</p>}
+  </header>
+
+  <section class="section" aria-labelledby="people-h">
+    <h2 id="people-h" class="section-label">People</h2>
+    <ul class="people">
+      <li class="person">
+        <Image class="person-photo" src={headshot} alt="" widths={[96, 192]} sizes="96px" />
+        <div>
+          <h3><a href="/about/">{profile.name}</a></h3>
+          <p class="person-role">{profile.position}</p>
+        </div>
+      </li>
+      {current.map((p) => {
+        const img = photoFor(p.photo);
+        return (
+          <li class="person">
+            {img
+              ? <Image class="person-photo" src={img} alt="" widths={[96, 192]} sizes="96px" />
+              : <span class="person-photo person-initials" aria-hidden="true">{initials(p.name)}</span>}
+            <div>
+              <h3>{p.name}</h3>
+              <p class="person-role">{roleLabel[p.role]} · since {p.since}</p>
+              {p.summary && <p class="person-summary">{p.summary}</p>}
+              {p.links.length > 0 && (
+                <p class="person-links">{p.links.map((l, i) => <>{i > 0 && " · "}<a href={l.url}>{l.label}</a></>)}</p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  {alumni.length > 0 && (
+    <section class="section" aria-labelledby="alumni-h">
+      <h2 id="alumni-h" class="section-label">Alumni</h2>
+      <ul class="alumni">
+        {alumni.map((p) => (
+          <li><strong>{p.name}</strong>, {roleLabel[p.role]}, {p.since}–{p.until}{p.now && <>. Now: {p.now}</>}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {profile.site.join_page !== "off" && (
+    <p class="more-link"><a class="link" href="/join/">Openings and how to join</a></p>
+  )}
+</Base>

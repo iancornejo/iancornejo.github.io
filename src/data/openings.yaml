@@ -1,0 +1,35 @@
+# Job openings, for the Join page (/join/). The page is switched off until `join_page` in
+# profile.yaml is "preview" (built but hidden) or "on" (in the menu).
+# To edit: open this file on GitHub, click the pencil, change it, commit. The site
+# redeploys in a few minutes. Wrap text with a colon (:) or a # in quotes.
+#
+# Openings are listed soonest deadline first. Each one disappears on its own once its
+# deadline passes (at 11:59 PM in the time zone set in profile.yaml): the daily rebuild drops
+# it, and a small script hides it in the meantime. No deadline means "Open until filled";
+# delete the entry when the position is filled.
+
+# A sentence or two shown under the page title.
+intro: ""
+
+# Shown when there are no open positions.
+none: >-
+  There are no openings right now, but prospective students and postdocs are welcome to
+  get in touch.
+
+# Copy the example below the `openings:` line and remove the # marks.
+#   id:       a short unique name, e.g. phd-2027
+#   kind:     postdoc | phd | ms | undergrad | other
+#   deadline: YYYY-MM-DD, or leave it out for "Open until filled"
+#   apply:    a web address, or mailto:you@example.edu
+openings:
+  # - id: phd-2027
+  #   title: PhD student, radar microphysics
+  #   kind: phd
+  #   posted: 2027-01-10
+  #   deadline: 2027-02-15
+  #   start: Fall 2027
+  #   summary: >-
+  #     A funded PhD position on drop size distributions from radars and disdrometers.
+  #   apply:
+  #     label: How to apply
+  #     url: https://example.edu/apply

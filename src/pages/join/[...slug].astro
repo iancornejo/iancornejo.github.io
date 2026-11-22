@@ -1,0 +1,49 @@
+---
+// The Join page (/join/), from src/data/openings.yaml. Built only when `join_page` in
+// profile.yaml is "preview" (hidden: no menu link, noindex) or "on". Openings are sorted
+// by deadline and dropped once closed: here at build time, and by the script in
+// Base.astro between the daily rebuilds.
+import Base from "../../layouts/Base.astro";
+import EmailLink from "../../components/EmailLink.astro";
+import { profile, jobs, openOpenings, closesAt, longDate, zoneName, kindLabel } from "../../lib/content";
+
+export function getStaticPaths() {
+  return profile.site.join_page === "off" ? [] : [{ params: { slug: undefined } }];
+}
+
+const open = openOpenings();
+---
+<Base title="Join" description={`Open positions in ${profile.name}'s research group, and how to apply.`}
+  noindex={profile.site.join_page === "preview"}>
+  <header class="page-head">
+    <h1>Join</h1>
+    {jobs.intro && <p class="lead">{jobs.intro}</p>}
+  </header>
+
+  <section class="section" aria-labelledby="openings-h">
+    <h2 id="openings-h" class="section-label">Openings</h2>
+    {open.length > 0 && (
+      <ol class="openings" data-empty="openings-none">
+        {open.map((o) => (
+          <li class="opening" data-closes={o.deadline ? closesAt(o.deadline).toISOString() : undefined}>
+            <p class="opening-kind">{kindLabel[o.kind]}</p>
+            <h3>{o.title}</h3>
+            <p class="opening-meta">
+              {o.deadline ? <>Apply by <strong>{longDate(o.deadline)}</strong></> : <strong>Open until filled</strong>}
+              {o.start && <> · Starts {o.start}</>} · Posted {longDate(o.posted)}
+            </p>
+            <p class="opening-summary">{o.summary}</p>
+            {o.apply && <p><a class="btn btn-sm" href={o.apply.url}>{o.apply.label}</a></p>}
+          </li>
+        ))}
+      </ol>
+    )}
+    <div id="openings-none" class="openings-none" hidden={open.length > 0}>
+      <p>{jobs.none}</p>
+      <p><EmailLink class="btn btn-sm" label="Email" /></p>
+    </div>
+    {open.some((o) => o.deadline) && (
+      <p class="openings-note muted">Applications close at 11:59 PM {zoneName()} on the deadline.</p>
+    )}
+  </section>
+</Base>
